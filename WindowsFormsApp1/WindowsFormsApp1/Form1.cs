@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,16 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             BackColor = Color.Red;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Text files|*.txt|All files|*.*";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = File.ReadAllText(dlg.FileName);
+            }
         }
     }
 }
